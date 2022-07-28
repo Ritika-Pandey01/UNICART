@@ -1,0 +1,42 @@
+.loader-overlay {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1100;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.modalContent {
+    position: fixed;
+    top: 20vh;
+    left: 25%;
+    width: 50%;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    z-index: 1101;
+    animation: slide-down 300ms ease-out forwards;
+}
+.modalContent button[type="close"] {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: unset;
+    border: unset;
+    cursor: pointer;
+}
+
+
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-2rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
