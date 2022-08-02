@@ -24,8 +24,8 @@
 
 }
 
-ShoppingCartIcon{
-    justify-content:right;
+ShoppingCartIcon {
+    justify-content: right;
 }
 
 .cart-shop {
@@ -37,7 +37,8 @@ h3 {
     margin: 8px 0 14px;
     padding-left: 10px;
 }
-.add-item{
+
+.add-item {
     padding-right: 40%;
 }
 
@@ -89,13 +90,13 @@ h3 {
     text-overflow: ellipsis;
     font-size: 14px;
     color: #282828;
-    
+
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     inline-size: 15em;
     overflow-wrap: break-word;
     hyphens: manual;
-    height:3em;
-    
+    height: 3em;
+
     text-align: center;
 
 }
@@ -108,7 +109,7 @@ li {
 }
 
 .navbar {
-    top:0;
+    top: 0;
     position: fixed;
     display: flex;
     align-items: center;
@@ -160,7 +161,8 @@ li {
 .menu li {
     padding: 5px 14px;
 }
-.menu button{
+
+.menu button {
     background-color: transparent;
     color: white;
     border: none;
@@ -269,7 +271,7 @@ span.counter {
     padding-top: 30px;
 }
 
-.wishItems{
+.wishItems {
     outline: none;
     border: none;
     background: none;
@@ -279,13 +281,15 @@ span.counter {
 .meta {
     flex-grow: 60%;
 }
+
 .meta h3 {
     margin-top: 12px;
     margin-bottom: 4px;
     opacity: 0.8;
-    font-size:larger;
+    font-size: larger;
     padding-right: 2%;
 }
+
 .meta p {
     font-weight: 300;
     color: grey;
@@ -293,26 +297,62 @@ span.counter {
     font-size: 14px;
     padding-left: 5px;
 }
+
 .item-card_modal {
     display: flex;
 }
+
 .item-card_modal .img-wrap {
     flex-basis: 40%;
     min-width: 40%;
 }
-.item-card_modal .prices{
+
+.item-card_modal .prices {
     padding-right: 2%;
 }
-.item-card_modal .buttonTag_modal{
+
+.item-card_modal .buttonTag_modal {
     border-radius: 0px;
 }
+
 .item-card_modal .cart-addon_modal {
     justify-content: space-between;
 }
-.item-card_modal .add-item{
+
+.item-card_modal .add-item {
     padding-right: 65%;
 }
-.item-card_modal .counter{
+
+.item-card_modal .counter {
     padding-left: 35%;
     padding-right: 30%;
+}
+
+.order-container {
+    display: flex;
+    align-content: center;
+    vertical-align: middle;
+    min-height: 350px;
+}
+
+.order-container--success {
+    margin: auto;
+    text-align: center;
+}
+
+.order-container img {
+    max-width: 200px;
+}
+
+.message h1 {
+    margin: 0;
+}
+
+.message h1,
+span {
+    margin-top: 8px;
+}
+
+.message span {
+    color: rgba(black, 0.5);
 }

@@ -1,16 +1,22 @@
 import Modal from "../UI/Modal";
 import { Fragment, useState } from "react";
-
-function Cart({ Itemcount }) {
+import CartItem from "./CartItem";
+import OrderSuccess from "../UI/OrderSuccess";
+function Cart({ Itemcount, items,onHandleEvent }) {
     const [showModal, setShowModal] = useState(false);
+    const [orderModal,setOrderModal]=useState(false); 
     const handleModal = () => {
         setShowModal(previousValue => !previousValue);
     }
+    const handleOrderModal=()=>{
+        setShowModal(false);
+        setOrderModal(previousValue=>!previousValue);
+    }
     return (
         <Fragment>
-            <button onClick={handleModal}><li><img src={"assets/shopping-cart.png"}></img>
-                <span className='badge badge-warning' id='lblCartCount'> {Itemcount}</span>
-            </li></button>
+            <button onClick={handleModal}>
+            <li><img src={"assets/shopping-cart.png"}></img>
+                <span className='badge badge-warning' id='lblCartCount'> {Itemcount}</span></li></button>
             {
                 showModal &&
                 <Modal onClose={handleModal}>
@@ -20,28 +26,16 @@ function Cart({ Itemcount }) {
                             {
                                 Itemcount > 0 ?
 
-                                    <div className="checkout-modal_list-item">
-                                        <div className="img-wrap">
-                                            <img src={"assets/image1.png"} alt="Placeholder"/>
+                                    items.map(item => {
+                                        return (
+                                            <CartItem 
+                                            data={item}
+                                             key={item.id}
+                                             onEmitDecreaseItem={id=>onHandleEvent(id,-1)}
+                                             onEmitIncreaseItem={id=>onHandleEvent(id,1)}/>
+                                             )
 
-                                        </div>
-
-                                        <div className="information">
-                                            <div >
-                                                <h4>Title</h4>
-                                                <div className="prices">
-                                                    <span className="pricing">2000</span>
-                                                    <small className="pricing-small"><strike>2500</strike></small>
-                                                </div>
-                                            </div>
-                                            <div className="cart-addon cart-addon_modal">
-                                                <button className="subButton">-</button>
-                                                <span className="counter">{0}</span>
-                                                <button className="addButton">+</button>
-                                            </div>
-
-                                        </div>
-                                    </div>
+                                    })
                                     :
                                     <div className="empty-cart">
                                         Your cart is empty
@@ -54,13 +48,22 @@ function Cart({ Itemcount }) {
                             <div className="checkout-modal_footer">
                                 <div className="totalAmount">
                                     <h5>Total Amount : </h5>
-                                    <h5> 2000 INR</h5>
+                                    <h5>
+                                    <span style={{margin:"0px 4px"}}>₹</span>
+                                    {
+                                        items.reduce((previous, current) => {
+                                            return previous + (current.discountedPrice * current.quantity)
+                                        }, 0)
+                                    }</h5>
                                 </div>
-                                <button>Order Now</button>
+                                <button onClick={handleOrderModal}>Order Now</button>
                             </div>
                         }
                     </div>
                 </Modal>
+            }
+            {
+                orderModal && <OrderSuccess onClose={handleOrderModal}/>
             }
         </Fragment>);
 }

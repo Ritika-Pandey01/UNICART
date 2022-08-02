@@ -1,6 +1,6 @@
 import React from "react";
 import Cart from "../Cart";
-function Header({count}) {
+function Header({count,items,onHandleEvent}) {
   return (<div>
     <nav className="navbar">
 
@@ -27,7 +27,7 @@ function Header({count}) {
           <button><li>Essentials</li></button>
           <button><li>Miscellaneous</li></button>
           <button><li><img src={"assets/wishlist.png"}></img></li></button>
-          <Cart Itemcount={count}/>
+          <Cart Itemcount={count} items={items} onHandleEvent={onHandleEvent}/>
         </div>
       </ul>
     </nav>

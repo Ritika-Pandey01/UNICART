@@ -1,65 +1,101 @@
 .checkout-modal h2 {
-        margin-top: 8px;
-        margin-bottom: 24px;
-    }
-
-.checkout-modal_list{
-    display: flex;
-        flex-direction: column;
-        max-height: 400px;
-        min-height: 300px;
-        overflow-y: auto;
+    margin-top: 8px;
+    margin-bottom: 24px;
 }
+
+.checkout-modal_list {
+    display: flex;
+    flex-direction: column;
+    max-height: 300px;
+    min-height: 200px;
+    overflow-y: auto;
+}
+
 .checkout-modal_list-item {
     display: flex;
     flex-direction: row;
+    padding-top: 8%;
 }
+
 .img-wrap {
     flex-basis: 5%;
-    
     height: 250px;
 }
+
 .information {
     width: 100%;
-    display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .checkout-modal h4 {
     margin-top: 0px;
     margin-bottom: 4px;
-    color: rgba(black,0.8);
+    color: rgba(black, 0.8);
     font-weight: 500;
     letter-spacing: 0.02px;
 }
+
 .checkout-modal_footer {
     border-top: 1px solid rgba(128, 128, 128, 0.288);
     display: flex;
     justify-content: space-between;
 }
+
 .totalAmount {
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
+
 .checkout-modal_footer h4:first-child {
     margin: 0 16px;
 }
-.checkout-modal button {
+.subButton_modal{
     margin-top: 2%;
     align-self: center;
     background-color: #A27B5C;
     color: white;
     border: unset;
-    padding: 12px 24px;
+    padding: 6px 15px;
     border-radius: 4px;
     cursor: pointer;
 }
+.checkout-modal button{
+    margin-top: 2%;
+    align-self: center;
+    background-color: #A27B5C;
+    color: white;
+    border: unset;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.addButton_modal {
+    margin-top: 2%;
+    align-self: center;
+    background-color: #A27B5C;
+    color: white;
+    border: unset;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 .checkout-modal_footer button :hover {
     opacity: 0.85;
 }
+
 .empty-cart {
     margin: auto;
     color: gray;
     padding: 24px 0 48px;
+}
+
+.img-fluid_modal {
+    max-width: 300%;
+}
+
+.counter_modal {
+    padding: 0px 20px;
 }
