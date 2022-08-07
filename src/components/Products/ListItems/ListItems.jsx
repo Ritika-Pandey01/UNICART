@@ -4,28 +4,24 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import Modal from "../../UI/Modal";
-function ListItems({ data,onAdd,onRemove }) {
-
-    // const [pointer, setPointer] = useState(0);
+import { useSelector,useDispatch } from "react-redux";
+import { addItemHandler,removeItemHandler } from "../../../actions";
+function ListItems({ data }) {
+    const [showModal, setShowModal] = useState(false);
+   const item= useSelector(state=>state.items.find(item=>item.id===data.id))
+   const dispatch=useDispatch();
 
     const increasePointer = event => {
         event.stopPropagation();
-        onAdd(data.id);
-        // setPointer(pointer + 1);
+        dispatch(addItemHandler(data))
     }
     const decreasePointer = event => {
         event.stopPropagation();
-        onRemove(data.id);
-        // if (pointer <= 0) {
-        //     return;
-        // }
-        // if(pointer==1){
-        //     onRemove(data.id);
-        // }
-        // setPointer(pointer - 1);
+        dispatch( removeItemHandler(data.id))
+        
     }
 
-    const [showModal, setShowModal] = useState(false);
+    
     const handleModal = () => {
         setShowModal(previousState => !previousState);
     }
@@ -51,7 +47,7 @@ function ListItems({ data,onAdd,onRemove }) {
                 </div>
 
                 {
-                    data.quantity < 1 ?
+                    !item ||item?.quantity < 1 ?
                         <button className="buttonTag" variant="contained" onClick={increasePointer}>
                             <span className="add-item">Add to cart&nbsp;</span>
                             <ShoppingCartIcon />
@@ -59,7 +55,7 @@ function ListItems({ data,onAdd,onRemove }) {
                         :
                         <div className="cart-addon">
                             <button className="button-cart" onClick={decreasePointer}><span><RemoveIcon fontSize="small" /></span></button>
-                            <span className="counter">{data.quantity}</span>
+                            <span className="counter">{item.quantity}</span>
                             <button className="button-cart" onClick={increasePointer}><span><AddIcon fontSize="small" /></span></button>
                         </div>
                 }
@@ -80,7 +76,7 @@ function ListItems({ data,onAdd,onRemove }) {
                         </div>
                         <p>{data.description}</p>
                         {
-                            data.quantity < 1 ?
+                            !item ||item?.quantity < 1 ?
                                 <button className="buttonTag buttonTag_modal" variant="contained" onClick={increasePointer}>
                                     <span className="add-item">Add to cart&nbsp;</span>
                                     <ShoppingCartIcon />
@@ -88,7 +84,7 @@ function ListItems({ data,onAdd,onRemove }) {
                                 :
                                 <div className="cart-addon cart-addon_modal">
                                     <button className="button-cart" onClick={decreasePointer}><span><RemoveIcon fontSize="small" /></span></button>
-                                    <span className="counter">{data.quantity}</span>
+                                    <span className="counter">{item.quantity}</span>
                                     <button className="button-cart" onClick={increasePointer}><span><AddIcon fontSize="small" /></span></button>
                                 </div>
                         }

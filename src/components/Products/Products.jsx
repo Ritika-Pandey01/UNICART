@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ListItems from "./ListItems/ListItems";
 import axios from "axios";
 import { Loader } from "../UI/Loader";
-function Products({onAddItems,onRemoveItems,eventList}) {
+function Products() {
     const [items, setItems] = useState([]);
     const [loader,setLoader]=useState(true);
     useEffect(() => {
@@ -13,7 +13,6 @@ function Products({onAddItems,onRemoveItems,eventList}) {
                 const transformedData = data.map((item, index) => {
                     return {
                         ...item,
-                        quantity:0,
                         id: index
                     }
                 })
@@ -28,35 +27,6 @@ function Products({onAddItems,onRemoveItems,eventList}) {
         }
         fetchItems();
     }, []);
-    useEffect(()=>{
-        if(eventList.id>-1){
-            if(eventList.type===1){
-                handleAddItems(eventList.id)
-            }
-            else if(eventList.type===-1){
-                handleRemoveItems(eventList.id)
-            }
-        }
-    },[eventList]);
-    const handleAddItems=id=>{
-        let data=[...items]
-        let index=data.findIndex(i=>i.id===id)
-        data[index].quantity+=1
-        setItems([...data])
-        onAddItems(data[index]);
-      
-    }
-    const handleRemoveItems=id=>{
-        let data=[...items]
-        let index=data.findIndex(i=>i.id===id)
-        if(data[index].quantity!==0){
-            data[index].quantity-=1
-            setItems([...data])
-            onRemoveItems(data[index]);
-        }
-
-        
-    }
     return (
         <>
         
@@ -64,7 +34,7 @@ function Products({onAddItems,onRemoveItems,eventList}) {
 
             {
                 items.map(item => {
-                    return (<ListItems onAdd={handleAddItems} onRemove={handleRemoveItems} key={item.id} data={item}/>);
+                    return (<ListItems  key={item.id} data={item}/>);
                 })
             }
         </div>

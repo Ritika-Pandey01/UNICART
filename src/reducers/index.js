@@ -12,7 +12,8 @@ const mainReducer=(state,action)=>{
             }
             else{
                 items.push({
-                    ...payload.items,quantity:1
+                    ...payload.item,
+                    quantity:1
                 })
             }
             const totalAmount=state.totalAmount+payload.item.discountedPrice
