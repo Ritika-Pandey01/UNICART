@@ -1,10 +1,11 @@
 import React from "react";
 import Cart from "../Cart";
+import { NavLink } from "react-router-dom";
 function Header({count,items,onHandleEvent}) {
   return (<div>
     <nav className="navbar">
 
-      <div className="logo"><img src={"assets/logo.png"}></img> <a href="/">UNICART</a></div>
+      <div className="logo"><img src={"assets/logo.png"}></img> <NavLink  to="/">UNICART</NavLink></div>
       <div className="searchBox-container">
         <form className="form-search">
           <input className="search" type="text"
@@ -23,10 +24,9 @@ function Header({count,items,onHandleEvent}) {
 
       <ul className="nav-links">
         <div className="menu">
-        <button><li>Food</li></button>
-          <button><li>Essentials</li></button>
-          <button><li>Miscellaneous</li></button>
-          <button><li><img src={"assets/wishlist.png"}></img></li></button>
+        <button><li><NavLink exact to="/category-1">Food</NavLink></li></button>
+          <button><li><NavLink exact to="/category-2">Essentials</NavLink></li></button>
+          <button><li><NavLink exact to="/category-3">Clothes</NavLink></li></button>
           <Cart Itemcount={count} items={items} onHandleEvent={onHandleEvent}/>
         </div>
       </ul>

@@ -40,7 +40,6 @@ function ListItems({ data }) {
                             <strike>₹{data.price}</strike>
                         </small>
 
-                        <button className="wishItems" ><span><FavoriteBorderOutlinedIcon fontSize="small" /></span></button>
 
                     </div>
 

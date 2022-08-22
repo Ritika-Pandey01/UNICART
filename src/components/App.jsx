@@ -1,23 +1,36 @@
 
 import React from "react";
-
-import Products from "./Products/Products";
 import Header from "./layout/Header";
-import DemoCarousel from "./Products/LandingCorousel";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CarouselBar from "./Products/LineCarousel";
+import Products from "./Products/Products";
+import Home from "./layout/Home";
+import { Routes, Route, Navigate } from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 
 
 
-function App(){
+function App() {
   return (
-  <div>
-  
-  <Header/>
-  <DemoCarousel/>
-  <CarouselBar/>
-  <Products/>
-  </div>
+    <BrowserRouter>
+    <div>
+    <Header/>
+      
+      <Routes>
+      <Route path="/404" exact element={<h1>Not Found!!</h1>} />
+        
+        <Route path="/" element={<Home />}/>
+        
+        <Route path=":category" element={<Products />}/>
+        
+        <Route path="" element={<h1>Not Found!!</h1>}/>
+        
+        
+       
+        
+      </Routes>
+
+    </div>
+    </BrowserRouter>
   );
 }
 
