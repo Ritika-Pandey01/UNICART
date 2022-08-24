@@ -6,7 +6,7 @@ import Products from "./Products/Products";
 import Home from "./layout/Home";
 import { Routes, Route, Navigate } from "react-router-dom";
 import {BrowserRouter} from "react-router-dom";
-
+import NotFound from "./layout/NotFound";
 
 
 function App() {
@@ -16,15 +16,13 @@ function App() {
     <Header/>
       
       <Routes>
-      <Route path="/404" exact element={<h1>Not Found!!</h1>} />
+      
+      <Route path="/404" element={<NotFound/>} />
         
         <Route path="/" element={<Home />}/>
         
         <Route path=":category" element={<Products />}/>
-        
-        <Route path="" element={<h1>Not Found!!</h1>}/>
-        
-        
+        <Route path='*' element={<NotFound/>} />
        
         
       </Routes>

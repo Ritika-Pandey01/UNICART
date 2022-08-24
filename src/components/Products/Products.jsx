@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import ListItems from "./ListItems/ListItems";
 import axios from "axios";
 import { Loader } from "../UI/Loader";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 function Products() {
     const [items, setItems] = useState([]);
     const [loader,setLoader]=useState(true);
     const params=useParams();
-    
+    const history= useNavigate();
     useEffect(() => {
         async function fetchItems() {
             try {
@@ -17,6 +17,10 @@ function Products() {
                 }
                 const response = await axios.get(`https://e-commerce-react-7d16c-default-rtdb.firebaseio.com/${slug}`)
                 const data = response.data
+                if(!data){
+                    handleNotFound();
+                    return;
+                }
                 const transformedData = data.map((item, index) => {
                     return {
                         ...item,
@@ -38,6 +42,10 @@ function Products() {
             setLoader(true)
         }
     }, [params]);
+
+    const handleNotFound=()=>{
+        history.push("/404")
+    }
     return (
         <>
         
