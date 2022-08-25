@@ -22,7 +22,7 @@ function App() {
         <Route path="/" element={<Home />}/>
         
         <Route path=":category" element={<Products />}/>
-        <Route path='*' element={<NotFound/>} />
+        <Route path='*'  element={<Navigate replace to="/404" />}/>
        
         
       </Routes>
